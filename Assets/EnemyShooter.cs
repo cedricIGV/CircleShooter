@@ -14,6 +14,8 @@ public class EnemyShooter : MonoBehaviour
     public float fireRate = 0.5F;
     float nextFire = 0.0f;
 
+    private bool fireCircleTime = true;
+
     void Start()
     {
         
@@ -24,18 +26,33 @@ public class EnemyShooter : MonoBehaviour
     {
         if (Time.time > nextFire)
         {
-            //var fireballInst = Instantiate(projectile, transform.position, Quaternion.Euler(new Vector2(0, 0)));
-            //fireballInst.velocity = new Vector2(projectileSpeed, 0);
             nextFire = Time.time + fireRate;
-            fire();
+            fireSpiral();
         }
+        fireCircle();
     }
 
-    void fire()
+    void fireSpiral()
     {
         bulletPos = transform.position;
         GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed*Mathf.Cos(rotationalSpeed*Time.time*1f), bulletSpeed*Mathf.Sin(rotationalSpeed*Time.time*1f));
-
+    }
+    void fireCircle()
+    {
+        if ((int)Time.time % 4 == 0 && fireCircleTime == true)
+        {
+            for(int i =0; i<20; ++i)
+            {
+                bulletPos = transform.position;
+                GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * 0.5f * Mathf.Cos(i * .3142f), bulletSpeed * 0.5f * Mathf.Sin(i * .3142f));
+            }
+            fireCircleTime = false;
+        }
+        if ((int)Time.time % 4 != 0 && fireCircleTime == false)
+        {
+            fireCircleTime = true;
+        }
     }
 }
