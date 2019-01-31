@@ -16,6 +16,7 @@ TextureImporter:
     21300022: bullet
     21300024: bullet_explosion
     21300026: SpaceShip
+    21300028: weakSpot
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -186,13 +187,33 @@ TextureImporter:
         width: 93
         height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 84fddb898a7e0d7428512c4d409ef450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weakSpot
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 809
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d325f5924a1177e4fa0fe14d562c23b5
       vertices: []
       indices: 
       edges: []
