@@ -15,6 +15,17 @@ public class EnemyShooter : MonoBehaviour
     float nextFire = 0.0f;
 
     private bool fireCircleTime = true;
+    private bool fireLaserTime = true;
+    private int laserStage = 0;
+
+    private float velocity;
+    private float radius;
+    private Vector2 _center;
+    private float _angle;
+
+    public float offsetAngle;
+
+    List<GameObject> laserBullets = new List<GameObject>();
 
     void Start()
     {
@@ -30,6 +41,7 @@ public class EnemyShooter : MonoBehaviour
             fireSpiral();
         }
         fireCircle();
+        laserSweep();
     }
 
     void fireSpiral()
@@ -40,7 +52,7 @@ public class EnemyShooter : MonoBehaviour
     }
     void fireCircle()
     {
-        if ((int)Time.time % 4 == 0 && fireCircleTime == true)
+        if ((int)Time.time % 4 == 0 && fireCircleTime == true && Time.time > 1f)
         {
             for(int i =0; i<20; ++i)
             {
@@ -53,6 +65,60 @@ public class EnemyShooter : MonoBehaviour
         if ((int)Time.time % 4 != 0 && fireCircleTime == false)
         {
             fireCircleTime = true;
+        }
+    }
+    void laserSweep()
+    {
+        if ((int)Time.time % 10 == 0 && fireLaserTime == true && Time.time > 1f)
+        {
+            if (laserStage < 8)
+            {
+                bulletPos = transform.position;
+                GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed*laserStage*0.15f, 0);
+                GameObject bullet2 = Instantiate(Projectile, bulletPos, Quaternion.identity);
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-bulletSpeed*laserStage*0.15f, 0);
+                laserBullets.Add(bullet);
+                laserBullets.Add(bullet2);
+            }
+            laserStage++;
+            if (laserStage >= 8)
+            {
+                fireLaserTime = false;
+                laserStage = 0;
+            }
+        }
+        if ((int)Time.time % 11 == 0)
+        {
+            for (int i =0; i<laserBullets.Count; ++i)
+            {
+                laserBullets[i].GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            }
+        }
+        if (Time.time > 12 && Time.time < 14.1)
+        {
+            velocity = -1f * (Time.time - 12f) * .1f;
+            _center = this.transform.position;
+            for (int i = 0; i<laserBullets.Count; ++i)
+            {
+                radius = Mathf.Sqrt(Mathf.Pow((_center.x - laserBullets[i].transform.position.x),2) + Mathf.Pow((_center.y - laserBullets[i].transform.position.y),2));
+                _angle += velocity * Time.deltaTime;
+                var offset = new Vector2(Mathf.Sin(_angle -1.57f), Mathf.Cos(_angle - 1.57f)) * radius;
+                laserBullets[i].transform.position = _center + offset;
+            }
+        }
+        if (Time.time > 14.1)
+        {
+            for (int i = 0; i < laserBullets.Count; ++i)
+            {
+                GameObject a = laserBullets[i];
+                laserBullets.RemoveAt(i);
+                Destroy(a);
+            }
+        }
+        if ((int)Time.time % 10 != 0 && fireLaserTime == false)
+        {
+            fireLaserTime = true;
         }
     }
 }
