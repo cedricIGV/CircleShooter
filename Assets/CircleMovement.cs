@@ -80,6 +80,7 @@ public class CircleMovement : MonoBehaviour
                 invincible = true;
                 StartCoroutine(Flash());
                 GetComponent<CapsuleCollider2D>().enabled = false;
+                GetComponent<PlayerHealth>().TakeDamage(10);
                 Invoke("resetInvulnerability", 2);
             }
         }
