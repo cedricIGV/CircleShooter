@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 90867257}
   - component: {fileID: 90867258}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: PlayerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,8 +147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -10}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: 179, y: -28.199997}
+  m_SizeDelta: {x: 326.6, y: 56.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90867258
 MonoBehaviour:
@@ -311,8 +311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0.0025100708, y: 0}
-  m_SizeDelta: {x: 0.0049744, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &891759245
 GameObject:
@@ -958,7 +958,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 6, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031850198
 MonoBehaviour:
@@ -1010,6 +1010,7 @@ GameObject:
   - component: {fileID: 2059371175}
   - component: {fileID: 2059371178}
   - component: {fileID: 2059371179}
+  - component: {fileID: 2059371180}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1209,3 +1210,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.93, y: 0.82}
   m_Direction: 0
+--- !u!114 &2059371180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059371174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02aa1add2e06d4243809dcab40c35501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBar: {fileID: 90867258}
+  TotalHealth: 100
