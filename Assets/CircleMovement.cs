@@ -8,12 +8,18 @@ public class CircleMovement : MonoBehaviour
     public float centerY;
     public float radius;
     public float angle;
+    public float fireRate = 0.5f;
+    float nextFire = 0.0f;
 
     public int vertexCount = 40;
     public float lineWidth = .3f;
 
     public Color flashColor = new Color(255,255,255, 45);
 
+    public GameObject Projectile;
+    public float bulletSpeed;
+
+    private Vector2 bulletPos;
 
 
     private LineRenderer lineRenderer;
@@ -34,7 +40,11 @@ public class CircleMovement : MonoBehaviour
     void Update()
     {
 
-
+        if (Time.time > nextFire && Input.GetKeyDown("q"))
+        {
+            nextFire = Time.time + fireRate;
+            fire();
+        }
         if (Input.GetKey("left"))
         {
             angle += 10/radius;
@@ -93,6 +103,13 @@ public class CircleMovement : MonoBehaviour
 
     }
 
+    void fire()
+    {
+        bulletPos = transform.position;
+        GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-1 * bulletSpeed * Mathf.Cos(Mathf.Deg2Rad* angle), -1 * bulletSpeed * Mathf.Sin(Mathf.Deg2Rad * angle));
+        bullet.transform.eulerAngles = new Vector3(0, 0, angle - 90 - 180);
+    }
 
     IEnumerator Flash()
     {

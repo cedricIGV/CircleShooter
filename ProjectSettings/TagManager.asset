@@ -16,8 +16,8 @@ TagManager:
   - 
   - EnemyProjectile
   - EnemyWeakPoint
-  - 
-  - 
+  - Player
+  - PlayerProjectile
   - 
   - 
   - 

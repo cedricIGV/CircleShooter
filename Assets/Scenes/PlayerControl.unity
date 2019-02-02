@@ -587,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1558217885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 2059371178}
   - component: {fileID: 2059371179}
   - component: {fileID: 2059371180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,9 +1034,13 @@ MonoBehaviour:
   centerY: 0
   radius: 1
   angle: 0
+  fireRate: 0.5
   vertexCount: 40
   lineWidth: 0.3
   flashColor: {r: 1, g: 0.06252845, b: 0, a: 0.6509804}
+  Projectile: {fileID: 8427468596178141151, guid: c900652f87ec3d648bec7e5f2ad99e4c,
+    type: 3}
+  bulletSpeed: 5
 --- !u!212 &2059371176
 SpriteRenderer:
   m_ObjectHideFlags: 0

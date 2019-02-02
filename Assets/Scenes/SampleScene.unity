@@ -319,6 +319,7 @@ MonoBehaviour:
   bulletSpeed: 5
   rotationalSpeed: 2
   fireRate: 0.2
+  offsetAngle: 0
 --- !u!50 &974180834
 Rigidbody2D:
   serializedVersion: 4
