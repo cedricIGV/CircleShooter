@@ -11,10 +11,14 @@ public class weakSpotHandler : MonoBehaviour
     private float radius = 1;
     private Vector2 _center;
     private float _angle;
+
+    public Color flashColor = new Color(255, 255, 255, 45);
+    private Color temp;
     // Start is called before the first frame update
     void Start()
     {
         _center = pivot.transform.position;
+        temp = GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
@@ -27,5 +31,18 @@ public class weakSpotHandler : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collide)
     {
+        StartCoroutine(Flash());
+    }
+
+    IEnumerator Flash()
+    {
+        float start = Time.time;
+        while(Time.time - start < 2)
+        {
+            GetComponent<SpriteRenderer>().color = flashColor;
+            yield return new WaitForSeconds(0.1f);
+            GetComponent<SpriteRenderer>().color = temp;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

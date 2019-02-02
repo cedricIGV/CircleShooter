@@ -8,7 +8,7 @@ public class CircleMovement : MonoBehaviour
     public float centerY;
     public float radius;
     public float angle;
-    public float fireRate = 0.5f;
+    public float fireRate = 0.25f;
     float nextFire = 0.0f;
 
     public int vertexCount = 40;
@@ -40,7 +40,7 @@ public class CircleMovement : MonoBehaviour
     void Update()
     {
 
-        if (Time.time > nextFire && Input.GetKeyDown("q"))
+        if (Time.time > nextFire && Input.GetKey("q"))
         {
             nextFire = Time.time + fireRate;
             fire();

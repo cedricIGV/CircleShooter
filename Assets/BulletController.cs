@@ -23,7 +23,10 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collide)
     {
-        Instantiate(bulletExplosion, transform.position, transform.rotation);
+        if (bulletExplosion != null)
+        {
+            Instantiate(bulletExplosion, transform.position, transform.rotation);
+        }
         Destroy(this.gameObject);
     }
 

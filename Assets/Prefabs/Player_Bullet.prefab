@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velX: 5
-  bulletExplosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  bulletExplosion: {fileID: 0}
 --- !u!50 &5412370437411052566
 Rigidbody2D:
   serializedVersion: 4

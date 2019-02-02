@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6126716117650104365}
   - component: {fileID: 6126716117650104355}
   - component: {fileID: 6126716117650104354}
-  - component: {fileID: 3400531288690258609}
+  - component: {fileID: 9188291586312540310}
+  - component: {fileID: 6483432916639977213}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: EnemyProjectile
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6126716117650104366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.43, y: -2.3, z: 0.18489353}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -117,8 +118,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velX: 5
   bulletExplosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
---- !u!58 &3400531288690258609
-CircleCollider2D:
+--- !u!70 &9188291586312540310
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126716117650104366}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000034281817, y: -0.00076698523}
+  m_Size: {x: 0.47381058, y: 0.11627051}
+  m_Direction: 1
+--- !u!70 &6483432916639977213
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,5 +148,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.33
+  m_Size: {x: 0.11933899, y: 0.46}
+  m_Direction: 0
