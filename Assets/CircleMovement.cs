@@ -48,14 +48,14 @@ public class CircleMovement : MonoBehaviour
             }
             if (Input.GetKey("left"))
             {
-                angle += 10 / radius;
+                angle += 30 / (radius*radius);
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
 
             }
             else if (Input.GetKey("right"))
             {
-                angle -= 10 / radius;
+                angle -= 30 / (radius*radius);
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
             }
