@@ -39,44 +39,44 @@ public class CircleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Time.time > nextFire && Input.GetKey("q"))
+        if (Time.timeScale == 1)
         {
-            nextFire = Time.time + fireRate;
-            fire();
-        }
-        if (Input.GetKey("left"))
-        {
-            angle += 10/radius;
-            transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
-            transform.eulerAngles = new Vector3(0,0,angle-90);
+            if (Time.time > nextFire && Input.GetKey("q"))
+            {
+                nextFire = Time.time + fireRate;
+                fire();
+            }
+            if (Input.GetKey("left"))
+            {
+                angle += 10 / radius;
+                transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+                transform.eulerAngles = new Vector3(0, 0, angle - 90);
 
-        }
-        else if (Input.GetKey("right"))
-        {
-            angle -= 10/radius;
-            transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
-            transform.eulerAngles = new Vector3(0, 0, angle - 90);
-        }
+            }
+            else if (Input.GetKey("right"))
+            {
+                angle -= 10 / radius;
+                transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+                transform.eulerAngles = new Vector3(0, 0, angle - 90);
+            }
 
-        if (Input.GetKey("up") && radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
-                Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2*lineWidth)
-        {
-            radius += .1f;
-            transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
-            SetupCircle();
-            //circle.transform.localScale += new Vector3(.0365f,.0365f,0);
+            if (Input.GetKey("up") && radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
+                    Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2 * lineWidth)
+            {
+                radius += .1f;
+                transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+                SetupCircle();
+                //circle.transform.localScale += new Vector3(.0365f,.0365f,0);
 
+            }
+            else if (Input.GetKey("down") && radius > 1)
+            {
+                radius -= .1f;
+                transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+                SetupCircle();
+                //circle.transform.localScale -= new Vector3(.0365f, .0365f, 0);
+            }
         }
-        else if (Input.GetKey("down") && radius > 1)
-        {
-            radius -= .1f;
-            transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
-            SetupCircle();
-            //circle.transform.localScale -= new Vector3(.0365f, .0365f, 0);
-        }
-
-
     }
 
    

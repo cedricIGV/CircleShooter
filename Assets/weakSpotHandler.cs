@@ -32,6 +32,7 @@ public class weakSpotHandler : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collide)
     {
         StartCoroutine(Flash());
+        pivot.GetComponent<PlayerHealth>().TakeDamage(10);
     }
 
     IEnumerator Flash()
