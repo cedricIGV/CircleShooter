@@ -8,13 +8,18 @@ public class EnemyShooter : MonoBehaviour
     //public float projectileSpeed = 8f;
     // Start is called before the first frame update
     public GameObject Projectile;
+    public GameObject Player;
     public float bulletSpeed;
     public float rotationalSpeed;
+
+
     Vector2 bulletPos;
     public float fireRate = 0.5F;
     float nextFire = 0.0f;
 
     private bool fireCircleTime = true;
+
+    public int numCircleBullets = 20;
     private bool fireLaserTime = true;
     private int laserStage = 0;
 
@@ -35,13 +40,16 @@ public class EnemyShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            fireSpiral();
-        }
-        fireCircle();
+        //if (Time.time > nextFire)
+        //{
+        //    nextFire = Time.time + fireRate;
+        //    //fireSpiral();
+        //    //fireAtPlayer();
+        //}
+        fireCircle(numCircleBullets);
         laserSweep();
+
+
     }
 
     void fireSpiral()
@@ -50,15 +58,15 @@ public class EnemyShooter : MonoBehaviour
         GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed*Mathf.Cos(rotationalSpeed*Time.time*1f), bulletSpeed*Mathf.Sin(rotationalSpeed*Time.time*1f));
     }
-    void fireCircle()
+    void fireCircle(int numBullets)
     {
         if ((int)Time.time % 4 == 0 && fireCircleTime == true && Time.time > 1f)
         {
-            for(int i =0; i<20; ++i)
+            for(int i =0; i<numBullets; ++i)
             {
                 bulletPos = transform.position;
                 GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * 0.5f * Mathf.Cos(i * .3142f), bulletSpeed * 0.5f * Mathf.Sin(i * .3142f));
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * 0.5f * Mathf.Cos(i * 2*Mathf.PI/numBullets), bulletSpeed * 0.5f * Mathf.Sin(i * 2 * Mathf.PI / numBullets));
             }
             fireCircleTime = false;
         }
@@ -121,4 +129,14 @@ public class EnemyShooter : MonoBehaviour
             fireLaserTime = true;
         }
     }
+
+    void fireAtPlayer()
+    {
+        Vector2 shotDirection = (Player.transform.position - this.transform.position).normalized;
+        GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed*shotDirection;
+
+    }
+
+
 }

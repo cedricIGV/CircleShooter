@@ -16,8 +16,8 @@ public class PlayerHealth : MonoBehaviour
     {
         HealthBar.maxValue = TotalHealth;
         HealthBar.minValue = 0;
-
         _currentHealth = TotalHealth;
+        HealthBar.value = _currentHealth;
     }
 
     public void TakeDamage(float damage)

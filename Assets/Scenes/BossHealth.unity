@@ -408,11 +408,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f2d452c23bb514d9b933166729b6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 6126716117650104366, guid: 78800201e67b0f74fb260997492c5eee,
+  Projectile: {fileID: 4156854435271581360, guid: 59fdd95420e4c4a9e8b4ab828a1ce670,
     type: 3}
+  Player: {fileID: 1572060965}
   bulletSpeed: 5
   rotationalSpeed: 2
   fireRate: 0.2
+  numCircleBullets: 20
   offsetAngle: 0
 --- !u!212 &279343294
 SpriteRenderer:
@@ -1223,9 +1225,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2012,15 +2014,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerX: 0
   centerY: 0
-  radius: 1
+  radius: 4
   angle: 0
-  fireRate: 0.5
+  fireRate: 0.1
   vertexCount: 40
   lineWidth: 0.3
   flashColor: {r: 1, g: 0.06252845, b: 0, a: 0.6509804}
   Projectile: {fileID: 8427468596178141151, guid: c900652f87ec3d648bec7e5f2ad99e4c,
     type: 3}
-  bulletSpeed: 5
+  bulletSpeed: 15
 --- !u!212 &1572060970
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2612,9 +2614,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
