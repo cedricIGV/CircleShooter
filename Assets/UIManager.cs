@@ -40,6 +40,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    	public void pauseControl(){
+			if(Time.timeScale == 1)
+			{
+				Time.timeScale = 0;
+				showPaused();
+			} else if (Time.timeScale == 0){
+				Time.timeScale = 1;
+				hidePaused();
+			}
+	}
+
     //hides objects with ShowOnPause tag
     public void hidePaused()
     {
