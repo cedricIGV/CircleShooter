@@ -25,4 +25,9 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth -= damage;
         HealthBar.value = _currentHealth;
     }
+
+    public float getCurrentHealth()
+    {
+        return _currentHealth;
+    }
 }

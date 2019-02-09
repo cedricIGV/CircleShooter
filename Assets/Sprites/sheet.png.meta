@@ -18,6 +18,9 @@ TextureImporter:
     21300026: SpaceShip
     21300028: weakSpot
     21300030: Bullet_2
+    21300032: asteroid_1
+    21300034: bullet_red
+    21300036: bullet_blue
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -235,6 +238,66 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5a386b84c48d5e742a2457ec762bcc43
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asteroid_1
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 131
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebec98730e57694387e849ef110c0c8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet_red
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 378
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77545c0f6cfb06a4d9f48458b19033b5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet_blue
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 653
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b0d8f1d191fdc41887981f133b22c3
       vertices: []
       indices: 
       edges: []

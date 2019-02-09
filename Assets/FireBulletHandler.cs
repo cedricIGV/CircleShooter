@@ -32,6 +32,6 @@ public class FireBulletHandler : MonoBehaviour
         bulletPos = transform.position;
         GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed*Mathf.Cos(angle), bulletSpeed*Mathf.Sin(angle));
-        print(angle*(180f/Mathf.PI));
+        //print(angle*(180f/Mathf.PI));
     }
 }

@@ -373,6 +373,10 @@ GameObject:
   - component: {fileID: 279343293}
   - component: {fileID: 279343297}
   - component: {fileID: 279343292}
+  - component: {fileID: 279343298}
+  - component: {fileID: 279343296}
+  - component: {fileID: 279343299}
+  - component: {fileID: 279343300}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -408,14 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f2d452c23bb514d9b933166729b6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 4156854435271581360, guid: 59fdd95420e4c4a9e8b4ab828a1ce670,
-    type: 3}
-  Player: {fileID: 1572060965}
-  bulletSpeed: 5
-  rotationalSpeed: 2
-  fireRate: 0.2
-  numCircleBullets: 20
-  offsetAngle: 0
 --- !u!212 &279343294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -478,6 +474,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &279343296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279343291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62759128d4660d54392eab9901ce4e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Projectile: {fileID: 6126716117650104366, guid: 78800201e67b0f74fb260997492c5eee,
+    type: 3}
+  bulletSpeed: 5
+  rotationalSpeed: 1
+  fireRate: 0.35
+  sprite: {fileID: 21300034, guid: 15128403b8b7a1f449e0a68d49a75c3a, type: 3}
 --- !u!114 &279343297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +505,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 978752695}
-  TotalHealth: 100
+  TotalHealth: 5000
+--- !u!114 &279343298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279343291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254bc726d9cd74e4d9495f6699eb6cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Projectile: {fileID: 6126716117650104366, guid: 78800201e67b0f74fb260997492c5eee,
+    type: 3}
+  Player: {fileID: 1572060965}
+  bulletSpeed: 4
+  fireRate: 1.25
+  numShots: 3
+  maxAngle: 75
+--- !u!114 &279343299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279343291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0de7e68d4abaf44afcad19c9731d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Projectile: {fileID: 6126716117650104366, guid: 78800201e67b0f74fb260997492c5eee,
+    type: 3}
+  bulletSpeed: 3
+  fireRate: 8
+  sprite: {fileID: 21300036, guid: 15128403b8b7a1f449e0a68d49a75c3a, type: 3}
+--- !u!114 &279343300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279343291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e9e1bbec098e84f93071ac127eb8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroid: {fileID: 8602672042732341717, guid: 6e0c6434fd30e3d4ea11c5bd35b07aa4,
+    type: 3}
+  bulletSpeed: 1
+  fireRate: 10
 --- !u!1001 &384975782
 PrefabInstance:
   m_ObjectHideFlags: 0
