@@ -11,6 +11,9 @@ public class CircleBulletPattern : MonoBehaviour
 
     private Vector2 bulletPos;
     private bool fireCircleTime = true;
+
+    float nextFire = 0.0F;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +28,9 @@ public class CircleBulletPattern : MonoBehaviour
 
     public void fireCircle(int numBullets, bool hasSafespot = false)
     {
-        if ((int)Time.time % fireRate == 0 && fireCircleTime == true && Time.time > 1f)
+        if (Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             int a = -1;
             if (hasSafespot)
             {
@@ -43,11 +47,6 @@ public class CircleBulletPattern : MonoBehaviour
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * 0.5f * Mathf.Cos(i * 2 * Mathf.PI / numBullets), bulletSpeed * 0.5f * Mathf.Sin(i * 2 * Mathf.PI / numBullets));
                 bullet.GetComponent<SpriteRenderer>().sprite = sprite;
             }
-            fireCircleTime = false;
-        }
-        if ((int)Time.time % fireRate != 0 && fireCircleTime == false)
-        {
-            fireCircleTime = true;
         }
     }
 }
