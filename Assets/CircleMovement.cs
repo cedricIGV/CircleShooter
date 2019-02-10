@@ -26,6 +26,9 @@ public class CircleMovement : MonoBehaviour
     private Color temp;
 
 
+    private float angleInc = 30;
+
+
     private bool invincible = false;
 
     // Start is called before the first frame update
@@ -41,21 +44,56 @@ public class CircleMovement : MonoBehaviour
     {
         if (Time.timeScale == 1)
         {
-            if (Time.time > nextFire && Input.GetKey("q"))
+
+            if (Input.GetKeyDown("q"))
             {
-                nextFire = Time.time + fireRate;
-                fire();
+                angleInc = angleInc * 2;
             }
+            else if (Input.GetKeyUp("q"))
+            {
+                angleInc = angleInc / 2;
+            }
+
+            if (Input.GetKey("q"))
+            {
+                if(Time.time > nextFire)
+                {
+                    nextFire = Time.time + fireRate;
+                    fire();
+
+                }
+                if (radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
+                    Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2 * lineWidth)
+                {
+                    radius += .07f;
+                    transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+                    SetupCircle();
+
+                }
+            }
+            //else
+            //{
+            //    if (radius > 1)
+            //    {
+            //        radius -= .05f;
+            //        transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+            //        SetupCircle();
+            //    }
+
+            //}
+
             if (Input.GetKey("left"))
             {
-                angle += 30 / (radius*radius);
+                angle += angleInc / (radius*radius);
+                angle = angle % 360;
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
 
             }
             else if (Input.GetKey("right"))
             {
-                angle -= 30 / (radius*radius);
+                angle -= angleInc / (radius*radius);
+                angle = angle % 360;
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
             }
@@ -76,6 +114,7 @@ public class CircleMovement : MonoBehaviour
                 SetupCircle();
                 //circle.transform.localScale -= new Vector3(.0365f, .0365f, 0);
             }
+
         }
     }
 
@@ -121,6 +160,18 @@ public class CircleMovement : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             GetComponent<SpriteRenderer>().color = temp;
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+    IEnumerator Burst()
+    {
+        float sum = 0;
+        while (sum < 0.5f)
+        {
+            yield return new WaitForSeconds(0.0f);
+            sum += .1f;
+            radius += .1f;
+            transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
+            SetupCircle();
         }
     }
 

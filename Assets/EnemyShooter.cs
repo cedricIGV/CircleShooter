@@ -25,6 +25,10 @@ public class EnemyShooter : MonoBehaviour
         if (GetComponent<PlayerHealth>().getCurrentHealth() < GetComponent<PlayerHealth>().TotalHealth * .80)
         {
             GetComponent<CircleBulletPattern>().fireCircle(15, true);
+
+        }
+        if (GetComponent<PlayerHealth>().getCurrentHealth() < GetComponent<PlayerHealth>().TotalHealth * .79)
+        {
             GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position);
         }
         if ((GetComponent<PlayerHealth>().getCurrentHealth() < GetComponent<PlayerHealth>().TotalHealth * .7) && (phase==0))
