@@ -7,10 +7,11 @@ public class EnemyShooter : MonoBehaviour
     //public Rigidbody2D projectile;
     //public float projectileSpeed = 8f;
     // Start is called before the first frame update
-
+    private int phase;
+    public ScreenShake cameraShake;
     void Start()
     {
-        
+        phase = 0;
     }
 
     // Update is called once per frame
@@ -25,6 +26,10 @@ public class EnemyShooter : MonoBehaviour
         {
             GetComponent<CircleBulletPattern>().fireCircle(15, true);
             GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position);
+        }
+        if ((GetComponent<PlayerHealth>().getCurrentHealth() < GetComponent<PlayerHealth>().TotalHealth * .7) && (phase==0))
+        {
+            cameraShake.TriggerShake();
         }
         //laserSweep();
     }
