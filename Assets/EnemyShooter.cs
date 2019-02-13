@@ -28,7 +28,7 @@ public class EnemyShooter : MonoBehaviour
         }
         if (GetComponent<PlayerHealth>().getCurrentHealth() < GetComponent<PlayerHealth>().TotalHealth * .79)
         {
-            GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position);
+            GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 0);
         }
         //laserSweep();
     }

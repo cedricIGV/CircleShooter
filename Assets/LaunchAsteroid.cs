@@ -8,7 +8,7 @@ public class LaunchAsteroid : MonoBehaviour
     public GameObject asteroid;
     public float bulletSpeed;
     public float fireRate = 10;
-    float angle = 0;
+
     float nextFire = 0;
     int numBullets = 10;
     Vector2 bulletPos;
@@ -22,7 +22,7 @@ public class LaunchAsteroid : MonoBehaviour
     {
     }
 
-    public void launchAsteroid(bool rotate, Vector3 bulletPos)
+    public void launchAsteroid(bool rotate, Vector3 bulletPos, float angle)
     {
         if (Time.time > nextFire)
         {
