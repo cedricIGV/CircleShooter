@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 279343296}
   - component: {fileID: 279343299}
   - component: {fileID: 279343300}
+  - component: {fileID: 279343301}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -412,6 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f2d452c23bb514d9b933166729b6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShake: {fileID: 388305072}
+  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!212 &279343294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -490,7 +493,7 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 5
   rotationalSpeed: 1
-  fireRate: 0.35
+  fireRate: 0.1
   sprite: {fileID: 21300034, guid: 15128403b8b7a1f449e0a68d49a75c3a, type: 3}
 --- !u!114 &279343297
 MonoBehaviour:
@@ -522,7 +525,7 @@ MonoBehaviour:
     type: 3}
   Player: {fileID: 1572060965}
   bulletSpeed: 4
-  fireRate: 1.25
+  fireRate: 0.1
   numShots: 3
   maxAngle: 75
 --- !u!114 &279343299
@@ -540,7 +543,7 @@ MonoBehaviour:
   Projectile: {fileID: 6126716117650104366, guid: 78800201e67b0f74fb260997492c5eee,
     type: 3}
   bulletSpeed: 3
-  fireRate: 8
+  fireRate: 0.1
   sprite: {fileID: 21300036, guid: 15128403b8b7a1f449e0a68d49a75c3a, type: 3}
 --- !u!114 &279343300
 MonoBehaviour:
@@ -557,7 +560,19 @@ MonoBehaviour:
   asteroid: {fileID: 8602672042732341717, guid: 6e0c6434fd30e3d4ea11c5bd35b07aa4,
     type: 3}
   bulletSpeed: 1
-  fireRate: 10
+  fireRate: 0.1
+--- !u!114 &279343301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279343291}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a823f53c50b479789d51cc4b166cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &384975782
 PrefabInstance:
   m_ObjectHideFlags: 0

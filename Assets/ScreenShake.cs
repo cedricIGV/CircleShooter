@@ -41,12 +41,12 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(shakeDuration);
         if (shakeDuration > 0)
         {
             transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
 
             shakeDuration -= Time.deltaTime * dampingSpeed;
+            print(shakeDuration);
         }
         else
         {
