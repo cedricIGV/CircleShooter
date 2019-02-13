@@ -413,6 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f2d452c23bb514d9b933166729b6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShake: {fileID: 388305072}
+  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!212 &279343294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -491,7 +493,7 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 5
   rotationalSpeed: 1
-  fireRate: 0.25
+  fireRate: 0.1
   sprite: {fileID: 21300034, guid: 15128403b8b7a1f449e0a68d49a75c3a, type: 3}
 --- !u!114 &279343297
 MonoBehaviour:
@@ -523,7 +525,7 @@ MonoBehaviour:
     type: 3}
   Player: {fileID: 1572060965}
   bulletSpeed: 4
-  fireRate: 0.25
+  fireRate: 0.1
   numShots: 3
   maxAngle: 75
 --- !u!114 &279343299
@@ -566,7 +568,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279343291}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36a823f53c50b479789d51cc4b166cb5, type: 3}
   m_Name: 
@@ -671,6 +673,7 @@ GameObject:
   - component: {fileID: 388305071}
   - component: {fileID: 388305069}
   - component: {fileID: 388305070}
+  - component: {fileID: 388305072}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -742,6 +745,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388305072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388305068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1a3c2499cb6c24bb7e7d43728b76cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &414844887
 GameObject:
   m_ObjectHideFlags: 0
