@@ -12,7 +12,9 @@ public class BulletController : MonoBehaviour
     public int bulletSpeed;
 
     private Vector3 start;
-    
+    public string type;
+
+    public bool dissapearOffscreen = true;
 
     float velY = 0f;
     Rigidbody2D rb;
@@ -21,11 +23,7 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         start = transform.position;
-
-
-
     }
 
     // Update is called once per frame
@@ -54,6 +52,21 @@ public class BulletController : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        print(dissapearOffscreen);
+        if (dissapearOffscreen == true)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void SetType(string a)
+    {
+        type = a;
+    }
+
+    public void SetDissapear(bool a)
+    {
+        dissapearOffscreen = a;
+        print(dissapearOffscreen);
     }
 }
