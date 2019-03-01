@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<RhythmosDatabase>
+  <NoteList>
+    <NoteEntry>
+      <name>UpNoteMainBeat</name>
+      <color>RGBA(0.914, 0.524, 0.768, 1.000)</color>
+      <audioclip>Assets/Resources/BANK_02_INSTR_0056_SND_0000 (Freeze).wav</audioclip>
+    </NoteEntry>
+    <NoteEntry>
+      <name>DownNoteMainBeat</name>
+      <color>RGBA(0.660, 0.478, 0.877, 1.000)</color>
+      <audioclip>Assets/Resources/BANK_02_INSTR_0097_SND_0000 (Freeze).wav</audioclip>
+    </NoteEntry>
+  </NoteList>
+  <RhythmList>
+    <RhythmEntry>
+      <name>MainBeat</name>
+      <bpm>176</bpm>
+      <RhythmSequence>
+        <Note>
+          <rest>False</rest>
+          <duration>2</duration>
+          <layoutIndex>1</layoutIndex>
+        </Note>
+        <Note>
+          <rest>False</rest>
+          <duration>2</duration>
+          <layoutIndex>1</layoutIndex>
+        </Note>
+        <Note>
+          <rest>False</rest>
+          <duration>2</duration>
+          <layoutIndex>1</layoutIndex>
+        </Note>
+        <Note>
+          <rest>False</rest>
+          <duration>2</duration>
+          <layoutIndex>1</layoutIndex>
+        </Note>
+      </RhythmSequence>
+    </RhythmEntry>
+  </RhythmList>
+</RhythmosDatabase>
