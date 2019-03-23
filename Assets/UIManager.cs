@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    GameObject[] pauseObjects;
+    public GameObject pauseScreen;
+    public GameObject startScreen;
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1;
-        pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
-        hidePaused();
+        Time.timeScale = 0;
+        pauseScreen.SetActive(false);
+        startScreen.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -32,36 +34,42 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void showPaused()
-    {
-        foreach (GameObject g in pauseObjects)
-        {
-            g.SetActive(true);
-        }
-    }
 
-    	public void pauseControl(){
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-				showPaused();
-			} else if (Time.timeScale == 0){
-				Time.timeScale = 1;
-				hidePaused();
-			}
+	public void pauseControl(){
+		if(Time.timeScale == 1)
+		{
+			Time.timeScale = 0;
+			showPaused();
+		} else if (Time.timeScale == 0){
+			Time.timeScale = 1;
+			hidePaused();
+		}
 	}
 
     //hides objects with ShowOnPause tag
     public void hidePaused()
     {
-        foreach (GameObject g in pauseObjects)
-        {
-            g.SetActive(false);
-        }
+        pauseScreen.SetActive(false);
+    }
+
+    public void showPaused()
+    {
+        pauseScreen.SetActive(true);
     }
 
     public void Reload()
     {
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void hideStart()
+    {
+        startScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void showStart()
+    {
+        startScreen.SetActive(true);
     }
 }
