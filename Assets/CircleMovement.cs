@@ -28,7 +28,6 @@ public class CircleMovement : MonoBehaviour
 
     private float angleInc = 30;
 
-
     private bool invincible = false;
 
     // Start is called before the first frame update
@@ -60,7 +59,6 @@ public class CircleMovement : MonoBehaviour
                 {
                     nextFire = Time.time + fireRate;
                     fire();
-
                 }
                 /*if (radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
                     Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2 * lineWidth)

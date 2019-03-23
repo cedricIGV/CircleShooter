@@ -18,12 +18,15 @@ public class BulletController : MonoBehaviour
 
     float velY = 0f;
     Rigidbody2D rb;
+
+    AudioSource explodeSound;
     // Start is called before the first frame update
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         start = transform.position;
+        explodeSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,13 +49,13 @@ public class BulletController : MonoBehaviour
         if (bulletExplosion != null)
         {
             Instantiate(bulletExplosion, transform.position, transform.rotation);
+            AudioSource.PlayClipAtPoint(explodeSound.clip, transform.position);
         }
         Destroy(this.gameObject);
     }
 
     void OnBecameInvisible()
     {
-        print(dissapearOffscreen);
         if (dissapearOffscreen == true)
         {
             Destroy(this.gameObject);
