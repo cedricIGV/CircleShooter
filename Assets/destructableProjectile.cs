@@ -19,7 +19,7 @@ public class destructableProjectile : MonoBehaviour
     public Vector3 velocity;
     void Start()
     {
-        totalHealth = 5;
+        totalHealth = 4;
         currentHealth = totalHealth;
         temp = GetComponent<SpriteRenderer>().color;
     }

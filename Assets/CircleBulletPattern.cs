@@ -32,13 +32,21 @@ public class CircleBulletPattern : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             int a = -1;
+            int b = -1;
+            int c = -1;
             if (hasSafespot)
             {
                 a = (int)(Random.value * numBullets)-1;
+                b = (a + (int)(numBullets/3))%numBullets;
+                c = (b + (int)(numBullets / 3))% numBullets;
+                print(a);
+                print(b);
+                print(c);
             }
             for (int i = 0; i < numBullets; ++i)
             {
-                if (i == a || i == a+1)
+                //if (i == a || i == a+1 || i == b || i == b + 1 || i == c || i == c + 1)
+                if (i == a || i == b || i == c)
                 {
                     continue;
                 }

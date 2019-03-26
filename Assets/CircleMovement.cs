@@ -28,7 +28,6 @@ public class CircleMovement : MonoBehaviour
 
     private float angleInc = 30;
 
-
     private bool invincible = false;
 
     // Start is called before the first frame update
@@ -47,11 +46,11 @@ public class CircleMovement : MonoBehaviour
 
             if (Input.GetKeyDown("q"))
             {
-                angleInc = angleInc * 2;
+                angleInc = angleInc / 2;
             }
             else if (Input.GetKeyUp("q"))
             {
-                angleInc = angleInc / 2;
+                angleInc = angleInc * 2; // 2;
             }
 
             if (Input.GetKey("q"))
@@ -60,16 +59,15 @@ public class CircleMovement : MonoBehaviour
                 {
                     nextFire = Time.time + fireRate;
                     fire();
-
                 }
-                if (radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
+                /*if (radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
                     Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2 * lineWidth)
                 {
                     radius += .07f;
                     transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                     SetupCircle();
 
-                }
+                }*/
             }
             //else
             //{
