@@ -58,11 +58,15 @@
     <string>MPTK_Example 0032</string>
     <string>MPTK_Example 0033</string>
     <string>MPTK_Example 0034</string>
+    <string>notes</string>
     <string>Salvador Henri - Jardin D'hiver</string>
     <string>Take 5 - by Paul Desmond</string>
     <string>The Christmas Song</string>
     <string>Three Instrument Test</string>
     <string>To Make the End of Battle</string>
-    <string>notes</string>
+    <string>JukeboxHero_bass</string>
+    <string>JukeboxHero_drums</string>
+    <string>JukeboxHero_guitar</string>
+    <string>JukeboxHero_vocals</string>
   </MidiFiles>
 </MidiSet>

@@ -566,6 +566,8 @@ MonoBehaviour:
   fireRate: 0.1
   numShots: 3
   maxAngle: 75
+  bulletSprite: {fileID: 0}
+  spriteSize: {x: 0, y: 0}
 --- !u!114 &279343299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2843,7 +2845,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572060965}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
