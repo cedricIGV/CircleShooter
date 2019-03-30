@@ -33,8 +33,8 @@ public class destructableProjectile : MonoBehaviour
             distanceFromCenter = transform.position - bulletPos;
             offsetVectorTemp = Vector2.Perpendicular(distanceFromCenter);
             offsetVector = new Vector3(offsetVectorTemp.x, offsetVectorTemp.y, 0) * Time.deltaTime * 0.7f;
-            transform.Rotate(Vector3.forward* Time.deltaTime);
         }
+        transform.Rotate(Vector3.forward, Time.deltaTime * 1000);
         velocity = velocity + offsetVector;
     }
 
