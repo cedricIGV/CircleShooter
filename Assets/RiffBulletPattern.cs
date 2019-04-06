@@ -36,49 +36,21 @@ public class RiffBulletPattern : MonoBehaviour
 
     }
 
-    public void fireRiff()
+    public IEnumerator fireRiff()
     {
-        if ((int)Time.time % fireRate == 0 && isFiring == false)
+        initialDirection = -bulletSpeed * (Player.transform.position - this.transform.position).normalized;
+        shotDirection = initialDirection;
+        for (int i =0; i<15; ++i)
         {
-            isFiring = true;
-            initialDirection = -bulletSpeed * (Player.transform.position - this.transform.position).normalized;
-            shotDirection = initialDirection;
-        }
-        if (Time.time > nextFire && isFiring && (direction == 1 || Time.time - timeStamp >=1))
-        {
-            nextFire = Time.time + bulletSparsity;
             bulletPos = transform.position;
-            shotDirection = RotateVector(shotDirection, Time.deltaTime * rotationalSpeed*100*direction);
+            shotDirection = RotateVector(shotDirection, i * rotationalSpeed * .1f * direction);
+            float angle = Vector2.Angle(shotDirection, initialDirection);
+            Vector2 shotDirection2 = RotateVector(shotDirection, -angle*2); //flip shotDirection over line btwn player and enemy
             GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = shotDirection;
-            bullet.GetComponent<SpriteRenderer>().sprite = sprite;
-            bulletList.Add(bullet);
-            if (Vector2.Angle(initialDirection, shotDirection) >= 170 && direction == 1)
-            {
-                initialDirection = -bulletSpeed * (Player.transform.position - this.transform.position).normalized;
-                direction = direction * -1;
-                shotDirection = initialDirection;
-                Vector2 velocityNew;
-                for (int i=1; i<=4; i++)
-                {
-                    velocityNew = (Player.transform.position - bulletList[bulletList.Count-3].transform.position).normalized;
-                    bulletList[bulletList.Count - i].GetComponent<Rigidbody2D>().velocity = RotateVector(velocityNew * bulletSpeed,(int)Random.Range(0,((i-2)*-15)));
-                }
-                bulletList.Clear();
-                timeStamp = Time.time;
-            }
-            else if (Vector2.Angle(initialDirection, shotDirection) >= 170 && direction == -1)
-            {
-                direction = direction * -1;
-                isFiring = false;
-                Vector2 velocityNew;
-                for (int i = 1; i <= 4; i++)
-                {
-                    velocityNew = (Player.transform.position - bulletList[bulletList.Count - 3].transform.position).normalized;
-                    bulletList[bulletList.Count - i].GetComponent<Rigidbody2D>().velocity = RotateVector(velocityNew * bulletSpeed, (int)Random.Range(0, ((i-2)*15)));
-                }
-                bulletList.Clear();
-            }
+            GameObject bullet2 = Instantiate(Projectile, bulletPos, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().velocity = shotDirection + (shotDirection * i*.1f);
+            bullet2.GetComponent<Rigidbody2D>().velocity = shotDirection2 + (shotDirection2 * i * .1f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

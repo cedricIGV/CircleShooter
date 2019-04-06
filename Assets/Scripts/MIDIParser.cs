@@ -6,10 +6,10 @@ using MidiPlayerTK;
 using System.IO;
 using System.Linq;
 
-
 public class MIDIParser : MonoBehaviour
 {
-
+    int numBeats = 0;
+    string phase = "start";
     //public MidiFile midi;
     public MidiFilePlayer midiFilePlayer;
     public GameObject enemy;
@@ -39,9 +39,26 @@ public class MIDIParser : MonoBehaviour
         //Debug.Log(notes.Count);
         foreach (MidiNote note in notes)
         {
-            if(note.Midi == 72)
+            if (numBeats == 48)
             {
-                enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20);
+                phase = "start Vocals";
+                if (note.Midi == 72)
+                {
+                    enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff");
+                }
+            }
+            if (phase == "start")
+            {
+                if (note.Midi == 72)
+                {
+                    enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20);
+                    numBeats++;
+                }
+            }
+            else if (phase == "start Vocals")
+            {
+                print(numBeats);
+                //new behaviour
             }
         }
     }
