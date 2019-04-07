@@ -42,9 +42,15 @@ public class MIDIParser : MonoBehaviour
             if (numBeats == 48)
             {
                 phase = "start Vocals";
+                print(note.Midi);
                 if (note.Midi == 72)
                 {
                     enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff");
+                }
+                if (note.Midi == 84)
+                {
+                    print("fire @");
+                    enemy.GetComponent<FireAtPlayerPattern>().fireAtPlayer();
                 }
             }
             if (phase == "start")
