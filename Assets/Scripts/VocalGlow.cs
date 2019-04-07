@@ -17,7 +17,7 @@ public class VocalGlow : MonoBehaviour
     public GameObject glowCamera;
     public float start = 1;
     public float end = 5;
-    public float duration = .1f;
+    public float duration = .68f;
     // Start is called before the first frame update
     void Start()
     {
