@@ -127,5 +127,9 @@ public class MIDIParser : MonoBehaviour
             PlaySong();
 
         }
+        if (Input.GetKeyDown("g"))
+        {
+            StartCoroutine(PulseMkGlow(Camera.main.GetComponent<MKGlow>(), startScatter, peakScatter, duration));
+        }
     }
 }
