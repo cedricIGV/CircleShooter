@@ -7,6 +7,7 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - ShowOnPause
+  - Background
   layers:
   - Default
   - TransparentFX
