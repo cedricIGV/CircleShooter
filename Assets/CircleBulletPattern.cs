@@ -14,6 +14,8 @@ public class CircleBulletPattern : MonoBehaviour
 
     float nextFire = 0.0F;
 
+    List<GameObject> bullets;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class CircleBulletPattern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void fireCircle(int numBullets, bool hasSafespot = false)
@@ -54,6 +56,7 @@ public class CircleBulletPattern : MonoBehaviour
                 GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * 0.5f * Mathf.Cos(i * 2 * Mathf.PI / numBullets), bulletSpeed * 0.5f * Mathf.Sin(i * 2 * Mathf.PI / numBullets));
                 bullet.GetComponent<SpriteRenderer>().sprite = sprite;
+                bullets.Add(bullet);
             }
         }
     }

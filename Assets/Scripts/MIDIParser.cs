@@ -20,6 +20,7 @@ public class MIDIParser : MonoBehaviour
     public float peakScatter = 5;
     public float duration = .1f;
 
+    GameObject grid;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,8 @@ public class MIDIParser : MonoBehaviour
 
         midiFilePlayer.OnEventNotesMidi = new MidiFilePlayer.ListNotesEvent();
         midiFilePlayer.OnEventNotesMidi.AddListener(NotesToPlay);
-
+        GameObject[] background = GameObject.FindGameObjectsWithTag("Background");
+        grid = background[0];
 
         //midiFilePlayer.OnEventStartPlayMidi = new UnityEngine.Events.UnityEvent();
         //midiFilePlayer.OnEventStartPlayMidi.AddListener(PlaySong);
@@ -46,10 +48,18 @@ public class MIDIParser : MonoBehaviour
         //Debug.Log(notes.Count);
         foreach (MidiNote note in notes)
         {
+            if (numBeats == 30)
+            {
+                enemy.GetComponent<LaunchAsteroid>().fade = true;
+                enemy.GetComponent<LaunchAsteroid>().startTime = Time.time;
+                grid.GetComponent<fade>().startFade = true;
+                grid.GetComponent<fade>().startTime = Time.time;
+            }
             if (numBeats == 48)
             {
                 phase = "start Vocals";
-                print(note.Midi);
+                //print(note.Midi);
+                grid.GetComponent<fade>().startFade = false;
                 if (note.Midi == 72)
                 {
                     enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff");
@@ -94,7 +104,7 @@ public class MIDIParser : MonoBehaviour
             if (Time.time <= (endTime / 2)) // if we are fading up 
             {
                 glow.bloomScattering = startAlpha + (endAlpha - startAlpha) * percentage; // calculate the new alpha
-                Debug.Log(endTime / 2);
+                //Debug.Log(endTime / 2);
             }
             else // if we are fading down
             {
@@ -103,7 +113,7 @@ public class MIDIParser : MonoBehaviour
 
             yield return new WaitForEndOfFrame(); // wait for the next frame before continuing the loop
         }
-        Debug.Log(endTime / 2);
+        //Debug.Log(endTime / 2);
         glow.bloomScattering = startAlpha; // force the alpha to the end alpha before finishing – this is here to mitigate any rounding errors, e.g. leaving the alpha at 0.01 instead of 0
     }
 
