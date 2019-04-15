@@ -4162,6 +4162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316660701}
   - component: {fileID: 316660702}
+  - component: {fileID: 316660703}
   m_Layer: 5
   m_Name: gridBkgrnd
   m_TagString: Background
@@ -4231,6 +4232,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &316660703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316660700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9307f293e5c0524e8c885a07d745a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startFade: 0
+  startTime: 0
+  duration: 20
 --- !u!1 &327929618
 GameObject:
   m_ObjectHideFlags: 0
@@ -7097,7 +7113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 6126716117650104366, guid: 78800201e67b0f74fb260997492c5eee,
     type: 3}
-  Player: {fileID: 0}
+  Player: {fileID: 374833544}
   bulletSpeed: 4
   fireRate: 0.1
   numShots: 3

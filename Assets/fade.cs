@@ -21,7 +21,6 @@ public class fade : MonoBehaviour
         if (startFade == true)
         {
             float t = (Time.time - startTime) / duration;
-            //print(Mathf.SmoothStep(minimum, maximum, t));
             GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a - (Time.time - startTime) / duration);
         }
         if (startFade == false)
