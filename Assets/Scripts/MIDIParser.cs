@@ -20,6 +20,8 @@ public class MIDIParser : MonoBehaviour
     public float peakScatter = 5;
     public float duration = .1f;
 
+    float riffTime;
+    float riffCount;
     GameObject grid;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,8 @@ public class MIDIParser : MonoBehaviour
         //        Debug.Log(note.ToString());
         //    }
         //}
-
+        riffTime = 100000;
+        riffCount = 1;
         midiFilePlayer.OnEventNotesMidi = new MidiFilePlayer.ListNotesEvent();
         midiFilePlayer.OnEventNotesMidi.AddListener(NotesToPlay);
         GameObject[] background = GameObject.FindGameObjectsWithTag("Background");
@@ -55,19 +58,41 @@ public class MIDIParser : MonoBehaviour
                 grid.GetComponent<fade>().startFade = true;
                 grid.GetComponent<fade>().startTime = Time.time;
             }
-            if (numBeats == 48)
+            if (phase == "start Vocals")
             {
-                phase = "start Vocals";
-                //print(note.Midi);
+                if (numBeats == 62)
+                {
+                    enemy.GetComponent<LaunchAsteroid>().fade = false;
+                }
                 grid.GetComponent<fade>().startFade = false;
+                //print(numBeats);
+                if (numBeats == 63)
+                {
+                    phase = "start";
+                }
+                if (numBeats == 110)
+                {
+                    phase = "rocking";
+                }
+                //print(note.Midi);
+                
+                if (Time.time - riffTime > .5 && riffCount < 2)
+                {
+                    enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff"); //second call to coreroutine ovverides the first one!
+                    riffTime = Time.time;
+                    riffCount++;
+                }
+                
                 if (note.Midi == 72)
                 {
                     enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff");
+                    riffTime = Time.time;
+                    grid.GetComponent<fade>().startFade = false;
+                    riffCount = 1;
                 }
                 if (note.Midi == 84)
                 {
-                    print("fire @");
-                    enemy.GetComponent<FireAtPlayerPattern>().fireAtPlayer();
+                    numBeats++;
                 }
             }
             if (phase == "start")
@@ -78,11 +103,14 @@ public class MIDIParser : MonoBehaviour
                     StartCoroutine(PulseMkGlow(Camera.main.GetComponent<MKGlow>(), startScatter, peakScatter, duration));
                     numBeats++;
                 }
-            }
-            else if (phase == "start Vocals")
-            {
-                print(numBeats);
-                //new behaviour
+                if (numBeats == 48)
+                {
+                    phase = "start Vocals";
+                }
+                if (numBeats == 78)
+                {
+                    phase = "start Vocals";
+                }
             }
         }
     }

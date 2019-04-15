@@ -44,6 +44,18 @@ public class LaunchAsteroid : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            for (int i = 0; i < bullets.Count; ++i)
+            {
+                if (bullets[i] != null)
+                {
+                    float t = (Time.time - startTime) / duration;
+                    //print(Mathf.SmoothStep(minimum, maximum, t));
+                    bullets[i].GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 1);
+                }
+            }
+        }
     }
 
     public void launchAsteroid(bool rotate, Vector3 bulletPos, float angle)

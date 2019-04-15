@@ -9,25 +9,15 @@ public class RiffBulletPattern : MonoBehaviour
     public float bulletSpeed;
     public float rotationalSpeed;
     public float bulletSparsity = 0.5F;
-    public float fireRate = 10F;
     public Sprite sprite;
-    float nextFire = 0.0F;
-    float angle;
     private Vector2 initialDirection;
     Vector2 shotDirection;
-    int direction;
-    bool isFiring;
-    float timeStamp;
     private Vector2 bulletPos;
 
     List<GameObject> bulletList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        direction = 1;
-        isFiring = false;
-        Vector2 shotDirection = new Vector2(0, 0);
-        timeStamp = 0;
     }
 
     // Update is called once per frame
@@ -40,10 +30,11 @@ public class RiffBulletPattern : MonoBehaviour
     {
         initialDirection = -bulletSpeed * (Player.transform.position - this.transform.position).normalized;
         shotDirection = initialDirection;
-        for (int i =0; i<15; ++i)
+        for (int i =0; i<14; ++i)
         {
+            print(i);
             bulletPos = transform.position;
-            shotDirection = RotateVector(shotDirection, i * rotationalSpeed * .1f * direction);
+            shotDirection = RotateVector(shotDirection, i * rotationalSpeed * .1f);
             float angle = Vector2.Angle(shotDirection, initialDirection);
             Vector2 shotDirection2 = RotateVector(shotDirection, -angle*2); //flip shotDirection over line btwn player and enemy
             GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
