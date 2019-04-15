@@ -18,6 +18,7 @@ public class HealthBoxManager : MonoBehaviour
         if (Input.GetKeyDown(".") && transform.childCount > 0)
         {
             transform.GetChild(transform.childCount-1).GetComponent<HealthBox>().blowUp();
+            Debug.Log(transform.childCount);
         }
     }
 }
