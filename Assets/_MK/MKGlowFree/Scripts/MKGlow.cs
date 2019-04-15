@@ -17,7 +17,7 @@ namespace MK.Glow.Legacy
     #else
         [ExecuteInEditMode]
     #endif
-    [DisallowMultipleComponent]
+    //[DisallowMultipleComponent]
     [ImageEffectAllowedInSceneView]
     [RequireComponent(typeof(Camera))]
 	public class MKGlow : MonoBehaviour
