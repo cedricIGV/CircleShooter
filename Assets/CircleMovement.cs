@@ -9,6 +9,12 @@ public class CircleMovement : MonoBehaviour
     public float radius;
     public float angle;
     public float fireRate = 0.25f;
+
+    public Sprite up;
+    public Sprite down;
+    public Sprite right;
+    public Sprite left;
+    public Sprite neutral;
     float nextFire = 0.0f;
 
     public int vertexCount = 40;
@@ -80,7 +86,30 @@ public class CircleMovement : MonoBehaviour
 
             //}
 
-            if (Input.GetKey("left"))
+            if (Input.GetKeyDown("left"))
+            {
+                transform.GetComponent<SpriteRenderer>().sprite = left;
+            }
+            else if (Input.GetKeyDown("right"))
+            {
+                transform.GetComponent<SpriteRenderer>().sprite = right;
+            }
+            else if (Input.GetKeyDown("down"))
+            {
+                transform.GetComponent<SpriteRenderer>().sprite = down;
+            }
+            else if (Input.GetKeyDown("up"))
+            {
+                transform.GetComponent<SpriteRenderer>().sprite = up;
+            }
+            else if(Input.GetKeyUp("up") || Input.GetKeyUp("down") || Input.GetKeyUp("left") || Input.GetKeyUp("right"))
+            {
+                transform.GetComponent<SpriteRenderer>().sprite = neutral;
+            }
+
+
+
+            else if (Input.GetKey("left"))
             {
                 angle += angleInc / (radius*radius);
                 angle = angle % 360;
@@ -94,6 +123,7 @@ public class CircleMovement : MonoBehaviour
                 angle = angle % 360;
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
+
             }
 
             if (Input.GetKey("up") && radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
@@ -111,7 +141,9 @@ public class CircleMovement : MonoBehaviour
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
                 SetupCircle();
                 //circle.transform.localScale -= new Vector3(.0365f, .0365f, 0);
+               
             }
+
 
         }
     }
