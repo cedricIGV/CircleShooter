@@ -30,6 +30,16 @@ public class CircleMovement : MonoBehaviour
 
     private bool invincible = false;
 
+    public Texture2D north;
+    public Texture2D south;
+    public Texture2D east;
+    public Texture2D west;
+    public Texture2D northwest;
+    public Texture2D southwest;
+    public Texture2D northeast;
+    public Texture2D southeast;
+    public Texture2D neutral;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +89,49 @@ public class CircleMovement : MonoBehaviour
             //    }
 
             //}
+            bool left = Input.GetKey("left");
+            bool right = Input.GetKey("right");
+            bool up = Input.GetKey("up");
+            bool down = Input.GetKey("down");
+
+            if (left && !down && !up)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap",west);
+            }
+            else if (left && down && !up)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", southwest);
+            }
+            else if (left && !down && up)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", northwest);
+            }
+            else if (right && !down && !up)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", east);
+            }
+            else if (down && right && !left)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", southeast);
+            }
+            else if (up && right && !left)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", northeast);
+            }
+            else if (up && !right && !left)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", north);
+            }
+            else if (down && !right && !left)
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", south);
+            }
+
+            else if (!(up || down || left || right))
+            {
+                transform.GetComponent<SpriteRenderer>().material.SetTexture("_EmissionMap", neutral);
+            }
+
 
             if (Input.GetKey("left"))
             {
