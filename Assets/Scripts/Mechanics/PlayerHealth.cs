@@ -38,9 +38,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
-        HealthBar.value = _currentHealth;
-        GetComponent<CamShakeSimple>().shakeDuration = .3f;
+        //_currentHealth -= damage;
+        //HealthBar.value = _currentHealth;
+        //GetComponent<CamShakeSimple>().shakeDuration = .3f;
     }
 
     public float getCurrentHealth()

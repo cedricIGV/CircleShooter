@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6500882119784268971}
   - component: {fileID: 6500882119784268968}
   - component: {fileID: 6500882119784268969}
-  m_Layer: 14
+  m_Layer: 5
   m_Name: deathParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,7 +8,6 @@ public class LaunchAsteroid : MonoBehaviour
     public GameObject asteroid;
     public float bulletSpeed;
     public float fireRate = 10;
-    public Sprite bulletSprite;
 
     float nextFire = 0;
     int numBullets = 10;
@@ -69,7 +68,6 @@ public class LaunchAsteroid : MonoBehaviour
                 bulletPos = transform.position;
                 GameObject bullet = Instantiate(asteroid, bulletPos, Quaternion.identity);
                 Vector3 velocity = new Vector3(bulletSpeed * Mathf.Cos(Mathf.Deg2Rad*angle), bulletSpeed * Mathf.Sin(Mathf.Deg2Rad*angle), 0);
-                bullet.GetComponent<SpriteRenderer>().sprite = bulletSprite;
                 bullet.GetComponent<destructableProjectile>().setVelocity(velocity);
                 bullet.GetComponent<destructableProjectile>().rotate = rotate;
                 bullet.GetComponent<destructableProjectile>().bulletPos = bulletPos;

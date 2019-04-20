@@ -13,7 +13,6 @@ public class FireAtPlayerPattern : MonoBehaviour
     public float maxAngle = 0;
     float nextFire = 0.0F;
 
-    public Sprite bulletSprite;
     public Vector2 spriteSize;
 
     private Vector2 bulletPos;
@@ -40,7 +39,6 @@ public class FireAtPlayerPattern : MonoBehaviour
                 shotDirection = RotateVector(shotDirection, a);
                 GameObject bullet = Instantiate(Projectile, bulletPos, Quaternion.identity);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * shotDirection;
-                bullet.GetComponent<SpriteRenderer>().sprite = bulletSprite;
                 bullet.GetComponent<SpriteRenderer>().size = spriteSize;
                 //bullet.GetComponent<SpriteRenderer>().color = Color.blue;
             }

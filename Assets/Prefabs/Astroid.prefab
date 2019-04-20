@@ -12,9 +12,13 @@ GameObject:
   - component: {fileID: 8602672042732341718}
   - component: {fileID: 8602672042732341719}
   - component: {fileID: 8602672042732341716}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 6324886007366419466}
+>>>>>>> 9ede43ed8f7bddf56d7c67f589c334c976396ca9
   m_Layer: 8
   m_Name: Astroid
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,3 +119,24 @@ MonoBehaviour:
   rotate: 0
   bulletPos: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+--- !u!50 &6324886007366419466
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602672042732341717}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
