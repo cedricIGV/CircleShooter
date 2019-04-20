@@ -63,8 +63,9 @@ public class MIDIParser : MonoBehaviour
                 if (numBeats == 62)
                 {
                     enemy.GetComponent<LaunchAsteroid>().fade = false;
+                    grid.GetComponent<fade>().startFade = false;
+                    grid.GetComponent<lightUp>().StartCoroutine("flareUp");
                 }
-                grid.GetComponent<fade>().startFade = false;
                 //print(numBeats);
                 if (numBeats == 63)
                 {

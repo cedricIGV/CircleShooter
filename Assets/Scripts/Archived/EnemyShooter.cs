@@ -47,7 +47,7 @@ public class EnemyShooter : MonoBehaviour
         }
         if ((GetComponent<PlayerHealth>().getCurrentHealth() < GetComponent<PlayerHealth>().TotalHealth * .9) && (phase==0))
         {
-            cameraShake.TriggerShake();
+            cameraShake.TriggerShake(.2f);
             StartCoroutine(Explode());
             phase = 1;
         }

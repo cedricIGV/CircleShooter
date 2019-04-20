@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 160508155}
   - component: {fileID: 160508156}
   - component: {fileID: 160508157}
+  - component: {fileID: 160508158}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -483,6 +484,19 @@ MonoBehaviour:
     maxValue: 10
   bloomScattering: 7
   bloomIntensity: 0.5
+--- !u!114 &160508158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160508151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1a3c2499cb6c24bb7e7d43728b76cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeMagnitude: 0.2
 --- !u!114 &177629801 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114662785300262660, guid: 32a8d8859acf18d4ba134834a876d5ea,
@@ -4173,6 +4187,7 @@ GameObject:
   - component: {fileID: 316660701}
   - component: {fileID: 316660702}
   - component: {fileID: 316660703}
+  - component: {fileID: 316660704}
   m_Layer: 5
   m_Name: gridBkgrnd
   m_TagString: Background
@@ -4257,6 +4272,18 @@ MonoBehaviour:
   startFade: 0
   startTime: 0
   duration: 20
+--- !u!114 &316660704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316660700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c449ef1b86b7f41937f93564846abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &327929618
 GameObject:
   m_ObjectHideFlags: 0
@@ -7024,6 +7051,7 @@ GameObject:
   - component: {fileID: 1699590606}
   - component: {fileID: 1699590605}
   - component: {fileID: 1699590604}
+  - component: {fileID: 1699590614}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -7232,6 +7260,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1699590614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699590603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86c3ef97c5e3e54faab2ad3c3d1cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletExplosion: {fileID: 0}
+  bulletPos: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1812485709
 GameObject:
   m_ObjectHideFlags: 0

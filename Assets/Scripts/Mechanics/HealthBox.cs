@@ -27,6 +27,7 @@ public class HealthBox : MonoBehaviour
             gameObject.transform.SetParent(null);
             Destroy(gameObject);
         }
-
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        camera.GetComponent<ScreenShake>().TriggerShake(.2f);
     }
 }

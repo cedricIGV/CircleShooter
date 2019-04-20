@@ -9,11 +9,13 @@ public class ScreenShake : MonoBehaviour
     // Desired duration of the shake effect
     private float shakeDuration = 0f;
     // A measure of magnitude for the shake. Tweak based on your preference
-    private float shakeMagnitude = 0.7f;
+    public float shakeMagnitude = 0.7f;
     // A measure of how quickly the shake effect should evaporate
-    private float dampingSpeed = 1.0f;
+    private float dampingSpeed = 2.0f;
     // The initial position of the GameObject
     Vector3 initialPosition;
+    Vector3 gridInit;
+    GameObject grid;
 
     void Awake()
     {
@@ -25,7 +27,9 @@ public class ScreenShake : MonoBehaviour
 
     void OnEnable()
     {
+        grid = GameObject.FindGameObjectWithTag("Background");
         initialPosition = tf.localPosition;
+        gridInit = grid.transform.position;
     }
 
     // Start is called before the first frame update
@@ -33,9 +37,9 @@ public class ScreenShake : MonoBehaviour
     {
     }
 
-    public void TriggerShake()
+    public void TriggerShake(float duration)
     {
-        shakeDuration = 1.0f;
+        shakeDuration = duration;
     }
 
     // Update is called once per frame
@@ -44,14 +48,14 @@ public class ScreenShake : MonoBehaviour
         if (shakeDuration > 0)
         {
             transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
-
+            grid.transform.position = gridInit + Random.insideUnitSphere * shakeMagnitude;
             shakeDuration -= Time.deltaTime * dampingSpeed;
-            print(shakeDuration);
         }
         else
         {
             shakeDuration = 0f;
             transform.localPosition = initialPosition;
+            grid.transform.position = gridInit;
         }
     }
 }
