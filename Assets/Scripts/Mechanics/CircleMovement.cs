@@ -173,6 +173,7 @@ public class CircleMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.gameObject);
         if (!invincible)
         {
             if (collision.gameObject.tag == "EnemyProjectile")

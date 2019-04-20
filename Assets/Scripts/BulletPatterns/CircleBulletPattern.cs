@@ -14,7 +14,7 @@ public class CircleBulletPattern : MonoBehaviour
 
     float nextFire = 0.0F;
 
-    List<GameObject> bullets;
+    List<GameObject> bullets = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
