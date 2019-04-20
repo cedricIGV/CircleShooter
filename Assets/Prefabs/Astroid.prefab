@@ -12,10 +12,7 @@ GameObject:
   - component: {fileID: 8602672042732341718}
   - component: {fileID: 8602672042732341719}
   - component: {fileID: 8602672042732341716}
-<<<<<<< HEAD
-=======
   - component: {fileID: 6324886007366419466}
->>>>>>> 9ede43ed8f7bddf56d7c67f589c334c976396ca9
   m_Layer: 8
   m_Name: Astroid
   m_TagString: EnemyProjectile
