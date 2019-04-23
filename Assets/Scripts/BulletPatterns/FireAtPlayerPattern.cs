@@ -38,9 +38,12 @@ public class FireAtPlayerPattern : MonoBehaviour
                     float t = (Time.time - startTime) / duration;
                     //print(Mathf.SmoothStep(minimum, maximum, t));
                     bullets[i].GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a - (Time.time - startTime) / duration);
-                    if (oldColor.a - (Time.time - startTime) / duration < .7)
+                    if ((oldColor.a - (Time.time - startTime) / duration) < .7)
                     {
-                        bullets[i].GetComponent<Collider2D>().enabled = false;
+                        foreach(Collider2D c in bullets[i].GetComponents<Collider2D> ())
+                        {
+                            c.enabled = false;
+                        }
                     }
                 }
             }

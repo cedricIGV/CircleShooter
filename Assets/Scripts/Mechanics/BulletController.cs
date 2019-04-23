@@ -46,11 +46,11 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collide)
     {
-        if (bulletExplosion != null)
+        /*if (bulletExplosion != null)
         {
             Instantiate(bulletExplosion, transform.position, transform.rotation);
             AudioSource.PlayClipAtPoint(explodeSound.clip, transform.position);
-        }
+        }*/
         Destroy(this.gameObject);
     }
 

@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 193154669}
   m_Layer: 14
   m_Name: HealthBlockHolder
-  m_TagString: Untagged
+  m_TagString: HealthBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4200,9 +4200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9307f293e5c0524e8c885a07d745a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFade: 0
-  startTime: 0
-  duration: 20
 --- !u!114 &316660704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7010,7 +7007,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699590603}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36a823f53c50b479789d51cc4b166cb5, type: 3}
   m_Name: 
@@ -7089,6 +7086,9 @@ MonoBehaviour:
   fireRate: 0.1
   numShots: 3
   maxAngle: 75
+  fade: 0
+  duration: 5
+  startTime: 0
   spriteSize: {x: 0, y: 0}
 --- !u!58 &1699590610
 CircleCollider2D:
@@ -7736,6 +7736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca5a18ba8f324aa6a408d80f87b544e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlMode: 0
   centerX: 0
   centerY: 0
   radius: 4

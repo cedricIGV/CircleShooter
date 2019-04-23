@@ -40,16 +40,7 @@ public class destructableProjectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collide)
     {
-        currentHealth=currentHealth - 1;
-        StartCoroutine(Flash());
-        if (currentHealth <= 0)
-        {
-            if (bulletExplosion != null)
-            {
-                Instantiate(bulletExplosion, transform.position, transform.rotation);
-            }
             Destroy(this.gameObject);
-        }
     }
 
     void OnBecameInvisible()

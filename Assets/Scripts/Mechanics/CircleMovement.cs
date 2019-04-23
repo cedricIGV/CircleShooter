@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CircleMovement : MonoBehaviour
 {
+    public bool controlMode;
     public float centerX;
     public float centerY;
     public float radius;
@@ -133,7 +134,8 @@ public class CircleMovement : MonoBehaviour
             }
 
 
-            if (Input.GetKey("left"))
+           
+            if ((controlMode == false && (Input.GetKey("left"))) || (controlMode == true && Input.GetKey("k")))
             {
                 angle += angleInc / (radius*radius);
                 angle = angle % 360;
@@ -141,7 +143,8 @@ public class CircleMovement : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
 
             }
-            else if (Input.GetKey("right"))
+            
+            else if ((controlMode == false && (Input.GetKey("right"))) || (controlMode == true && Input.GetKey("l")))
             {
                 angle -= angleInc / (radius*radius);
                 angle = angle % 360;
@@ -149,7 +152,9 @@ public class CircleMovement : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, angle - 90);
             }
 
-            if (Input.GetKey("up") && radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
+            //if (Input.GetKey("up") && radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
+            //        Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2 * lineWidth)
+            if ((controlMode == false && Input.GetKey("up")) || (controlMode == true && Input.GetKey("a")) && radius < Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMax, 0f)),
                     Camera.main.ScreenToWorldPoint(new Vector3(0f, Camera.main.pixelRect.yMin, 0f))) * 0.5f - 2 * lineWidth)
             {
                 radius += .1f;
@@ -158,7 +163,7 @@ public class CircleMovement : MonoBehaviour
                 //circle.transform.localScale += new Vector3(.0365f,.0365f,0);
 
             }
-            else if (Input.GetKey("down") && radius > 1)
+            else if ((controlMode == false && (Input.GetKey("down"))) || (Input.GetKey("s") && controlMode == true) && radius > 1)
             {
                 radius -= .1f;
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
@@ -181,8 +186,11 @@ public class CircleMovement : MonoBehaviour
                 invincible = true;
                 StartCoroutine(Flash());
                 GetComponent<CapsuleCollider2D>().enabled = false;
-                GetComponent<PlayerHealth>().TakeDamage(10);
                 Invoke("resetInvulnerability", 2);
+                if (GameObject.FindGameObjectWithTag("HealthBlock").transform.childCount > 0)
+                {
+                    GameObject.FindGameObjectWithTag("HealthBlock").transform.GetChild(GameObject.FindGameObjectWithTag("HealthBlock").transform.childCount - 1).GetComponent<HealthBox>().blowUp();
+                }
             }
         }
     }

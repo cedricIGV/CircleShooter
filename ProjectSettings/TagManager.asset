@@ -8,6 +8,7 @@ TagManager:
   - EnemyProjectile
   - ShowOnPause
   - Background
+  - HealthBlock
   layers:
   - Default
   - TransparentFX
