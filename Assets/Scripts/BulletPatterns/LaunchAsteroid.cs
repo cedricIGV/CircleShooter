@@ -31,7 +31,7 @@ public class LaunchAsteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fade == true)
+        if (fade == true && oldColor.a > 0.01f)
         {
             for (int i = 0; i < bullets.Count; ++i)
             {
@@ -45,6 +45,7 @@ public class LaunchAsteroid : MonoBehaviour
                         bullets[i].GetComponent<Collider2D>().enabled = false;
                     }
                 }
+
             }
         }
         else
@@ -53,7 +54,7 @@ public class LaunchAsteroid : MonoBehaviour
             {
                 if (bullets[i] != null)
                 {
-                    float t = (Time.time - startTime) / duration;
+                    //float t = (Time.time - startTime) / duration;
                     //print(Mathf.SmoothStep(minimum, maximum, t));
                     bullets[i].GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 1);
                 }

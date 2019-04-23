@@ -21,6 +21,8 @@ public class MIDIParser : MonoBehaviour
     public float peakScatter = 5;
     public float duration = .1f;
 
+    float gridAlpha;
+
     float riffTime;
     float riffCount;
     GameObject grid;
@@ -42,6 +44,8 @@ public class MIDIParser : MonoBehaviour
         midiFilePlayer.OnEventNotesMidi.AddListener(NotesToPlay);
         GameObject[] background = GameObject.FindGameObjectsWithTag("Background");
         grid = background[0];
+        gridAlpha = grid.GetComponent<SpriteRenderer>().color.a;
+
 
         //midiFilePlayer.OnEventStartPlayMidi = new UnityEngine.Events.UnityEvent();
         //midiFilePlayer.OnEventStartPlayMidi.AddListener(PlaySong);
@@ -56,33 +60,40 @@ public class MIDIParser : MonoBehaviour
             {
                 enemy.GetComponent<LaunchAsteroid>().fade = true;
                 enemy.GetComponent<LaunchAsteroid>().startTime = Time.time;
-                grid.GetComponent<fade>().startFade = true;
-                grid.GetComponent<fade>().startTime = Time.time;
                 enemy.GetComponent<FireAtPlayerPattern>().fade = true;
                 enemy.GetComponent<FireAtPlayerPattern>().startTime = Time.time;
+
+
+                StartCoroutine(fade.Fade(grid.GetComponent<SpriteRenderer>(), gridAlpha, 0, 7f));
+                //grid.GetComponent<fade>().startFade = true;
+                //grid.GetComponent<fade>().startTime = Time.time;
             }
             if (phase == "start Vocals")
             {
                 if (numBeats == 62)
                 {
+                    //return asteroids and grid to their original opacity
                     enemy.GetComponent<LaunchAsteroid>().fade = false;
-                    grid.GetComponent<fade>().startFade = false;
-                    grid.GetComponent<lightUp>().StartCoroutine("flareUp");
+
+
+                    //grid.GetComponent<fade>().startFade = false;
                 }
                 //print(numBeats);
                 if (numBeats == 63)
                 {
                     phase = "start";
+
                 }
                 if (numBeats == 110)
                 {
                     phase = "rocking";
                 }
                 //print(note.Midi);
-                
+
                 if (Time.time - riffTime > .5 && riffCount < 2)
                 {
                     enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff"); //second call to coreroutine ovverides the first one!
+
                     riffTime = Time.time;
                     riffCount++;
                 }
@@ -91,7 +102,8 @@ public class MIDIParser : MonoBehaviour
                 {
                     enemy.GetComponent<RiffBulletPattern>().StartCoroutine("fireRiff");
                     riffTime = Time.time;
-                    grid.GetComponent<fade>().startFade = false;
+
+
                     riffCount = 1;
                 }
                 if (note.Midi == 84)
@@ -105,7 +117,9 @@ public class MIDIParser : MonoBehaviour
                 {
                     enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20, numRings);
                     numRings++;
-                    StartCoroutine(PulseMkGlow(Camera.main.GetComponent<MKGlow>(), startScatter, peakScatter, duration));
+                    StartCoroutine(GlowTechniques.PulseMkGlow(Camera.main.GetComponent<MKGlow>(), startScatter, peakScatter, duration));
+
+
                     numBeats++;
                     if ((numRings-1) % 4 == 0)
                     {
@@ -115,6 +129,7 @@ public class MIDIParser : MonoBehaviour
                 if (numBeats == 48)
                 {
                     phase = "start Vocals";
+                    StartCoroutine(Peak(grid.GetComponent<SpriteRenderer>(), 0, .7f, gridAlpha, 2f));
                 }
                 if (numBeats == 78)
                 {
@@ -124,35 +139,6 @@ public class MIDIParser : MonoBehaviour
         }
     }
 
-    public static IEnumerator PulseMkGlow(MKGlow glow, float startAlpha, float endAlpha, float duration)
-    {
-        // keep track of when the fading started, when it should finish, and how long it has been running&lt;/p&gt; &lt;p&gt;&a
-        var startTime = Time.time;
-        var endTime = Time.time + duration;
-        var elapsedTime = 0f;
-
-        // set the canvas to the start alpha – this ensures that the canvas is ‘reset’ if you fade it multiple times
-        glow.bloomScattering = startAlpha;
-        // loop repeatedly until the previously calculated end time
-        while (Time.time <= endTime)
-        {
-            elapsedTime = Time.time - startTime; // update the elapsed time
-            var percentage = 1 / (duration / elapsedTime); // calculate how far along the timeline we are
-            if (Time.time <= (endTime / 2)) // if we are fading up 
-            {
-                glow.bloomScattering = startAlpha + (endAlpha - startAlpha) * percentage; // calculate the new alpha
-                //Debug.Log(endTime / 2);
-            }
-            else // if we are fading down
-            {
-                glow.bloomScattering = endAlpha - (endAlpha - startAlpha) * percentage; // calculate the new alpha
-            }
-
-            yield return new WaitForEndOfFrame(); // wait for the next frame before continuing the loop
-        }
-        //Debug.Log(endTime / 2);
-        glow.bloomScattering = startAlpha; // force the alpha to the end alpha before finishing – this is here to mitigate any rounding errors, e.g. leaving the alpha at 0.01 instead of 0
-    }
 
     void PlaySong()
     {
@@ -174,9 +160,20 @@ public class MIDIParser : MonoBehaviour
             PlaySong();
 
         }
+        if (Input.GetKeyDown("f"))
+        {
+            StartCoroutine(fade.Fade(grid.GetComponent<SpriteRenderer>(),0, 1, 5f));
+        }
         if (Input.GetKeyDown("g"))
         {
-            StartCoroutine(PulseMkGlow(Camera.main.GetComponent<MKGlow>(), startScatter, peakScatter, duration));
+            StartCoroutine(Peak(grid.GetComponent<SpriteRenderer>(), 0, .7f, gridAlpha, .5f));
         }
+    }
+
+
+    public  IEnumerator Peak(SpriteRenderer sprite, float startAlpha, float peakAlpha, float endAlpha, float duration)
+    {
+        yield return StartCoroutine(fade.Fade(sprite, startAlpha, peakAlpha, duration * .8f));
+        StartCoroutine(fade.Fade(sprite, peakAlpha, endAlpha, duration * .2f));
     }
 }
