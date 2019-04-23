@@ -10,6 +10,7 @@ using System.Linq;
 public class MIDIParser : MonoBehaviour
 {
     int numBeats = 0;
+    int numRings = 0;
     string phase = "start";
     //public MidiFile midi;
     public MidiFilePlayer midiFilePlayer;
@@ -57,6 +58,8 @@ public class MIDIParser : MonoBehaviour
                 enemy.GetComponent<LaunchAsteroid>().startTime = Time.time;
                 grid.GetComponent<fade>().startFade = true;
                 grid.GetComponent<fade>().startTime = Time.time;
+                enemy.GetComponent<FireAtPlayerPattern>().fade = true;
+                enemy.GetComponent<FireAtPlayerPattern>().startTime = Time.time;
             }
             if (phase == "start Vocals")
             {
@@ -100,9 +103,14 @@ public class MIDIParser : MonoBehaviour
             {
                 if (note.Midi == 72)
                 {
-                    enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20);
+                    enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20, numRings);
+                    numRings++;
                     StartCoroutine(PulseMkGlow(Camera.main.GetComponent<MKGlow>(), startScatter, peakScatter, duration));
                     numBeats++;
+                    if ((numRings-1) % 4 == 0)
+                    {
+                        enemy.GetComponent<FireAtPlayerPattern>().fireAtPlayer();
+                    }
                 }
                 if (numBeats == 48)
                 {

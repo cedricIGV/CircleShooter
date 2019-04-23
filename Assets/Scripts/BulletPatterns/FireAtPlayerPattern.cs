@@ -11,20 +11,52 @@ public class FireAtPlayerPattern : MonoBehaviour
     public float fireRate = 0.5F;
     public float numShots = 1;
     public float maxAngle = 0;
+    public bool fade;
+    public float duration = 5.0f;
+    public float startTime;
     float nextFire = 0.0F;
+    Color oldColor;
 
     public Vector2 spriteSize;
 
     private Vector2 bulletPos;
+    List<GameObject> bullets = new List<GameObject>();
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (fade == true)
+        {
+            for (int i = 0; i < bullets.Count; ++i)
+            {
+                if (bullets[i] != null)
+                {
+                    float t = (Time.time - startTime) / duration;
+                    //print(Mathf.SmoothStep(minimum, maximum, t));
+                    bullets[i].GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a - (Time.time - startTime) / duration);
+                    if (oldColor.a - (Time.time - startTime) / duration < .7)
+                    {
+                        bullets[i].GetComponent<Collider2D>().enabled = false;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < bullets.Count; ++i)
+            {
+                if (bullets[i] != null)
+                {
+                    float t = (Time.time - startTime) / duration;
+                    //print(Mathf.SmoothStep(minimum, maximum, t));
+                    bullets[i].GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 1);
+                }
+            }
+        }
     }
     public void fireAtPlayer()
     {
@@ -41,6 +73,8 @@ public class FireAtPlayerPattern : MonoBehaviour
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * shotDirection;
                 bullet.GetComponent<SpriteRenderer>().size = spriteSize;
                 //bullet.GetComponent<SpriteRenderer>().color = Color.blue;
+                oldColor = bullet.GetComponent<SpriteRenderer>().color;
+                bullets.Add(bullet);
             }
         }
 

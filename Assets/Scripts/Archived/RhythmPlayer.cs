@@ -57,7 +57,7 @@ public class RhythmPlayer : MonoBehaviour
             //if()
             if(player.GetCurrentNote().layoutIndex == 0)
             {
-                enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20);
+                enemy.GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, 20, 0);
             }
             else if(player.GetCurrentNote().layoutIndex == 1)
             {

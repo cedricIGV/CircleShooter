@@ -31,7 +31,7 @@ public class KeyboardBulletController : MonoBehaviour
 
         if(Input.GetKey("f"))
         {
-            GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, angle+=20);
+            GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, angle+=20, 0);
         }
 
 
@@ -52,9 +52,9 @@ public class KeyboardBulletController : MonoBehaviour
     {
         GetComponent<CircleBulletPattern>().fireCircle(15, true);
         yield return new WaitForSeconds(.3f);
-        GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, angle += 20);
+        GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, angle += 20, 0);
         yield return new WaitForSeconds(.3f);
-        GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, angle += 20);
+        GetComponent<LaunchAsteroid>().launchAsteroid(true, transform.position, angle += 20, 0);
 
     }
 

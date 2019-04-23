@@ -40,6 +40,10 @@ public class LaunchAsteroid : MonoBehaviour
                     float t = (Time.time - startTime) / duration;
                     //print(Mathf.SmoothStep(minimum, maximum, t));
                     bullets[i].GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a - (Time.time - startTime)/duration);
+                    if (oldColor.a - (Time.time - startTime) / duration < .7)
+                    {
+                        bullets[i].GetComponent<Collider2D>().enabled = false;
+                    }
                 }
             }
         }
@@ -57,14 +61,16 @@ public class LaunchAsteroid : MonoBehaviour
         }
     }
 
-    public void launchAsteroid(bool rotate, Vector3 bulletPos, float angle)
+    public void launchAsteroid(bool rotate, Vector3 bulletPos, float angle, int numFire)
     {
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
+            angle = numFire*5;
             for (int i =0; i<numBullets; ++i)
             {
                 angle = angle + 360 / numBullets;
+                //print(angle);
                 bulletPos = transform.position;
                 GameObject bullet = Instantiate(asteroid, bulletPos, Quaternion.identity);
                 Vector3 velocity = new Vector3(bulletSpeed * Mathf.Cos(Mathf.Deg2Rad*angle), bulletSpeed * Mathf.Sin(Mathf.Deg2Rad*angle), 0);
