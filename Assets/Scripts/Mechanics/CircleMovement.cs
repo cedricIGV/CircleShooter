@@ -163,7 +163,7 @@ public class CircleMovement : MonoBehaviour
                 //circle.transform.localScale += new Vector3(.0365f,.0365f,0);
 
             }
-            else if ((controlMode == false && (Input.GetKey("down"))) || (Input.GetKey("s") && controlMode == true) && radius > 1)
+            else if ((controlMode == false && (Input.GetKey("down"))) || (Input.GetKey("z") && controlMode == true) && radius > 1)
             {
                 radius -= .1f;
                 transform.position = new Vector2(centerX + radius * Mathf.Cos(Mathf.Deg2Rad * angle), centerY + radius * Mathf.Sin(Mathf.Deg2Rad * angle));
